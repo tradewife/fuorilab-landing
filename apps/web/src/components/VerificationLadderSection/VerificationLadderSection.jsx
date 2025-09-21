@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { LadderDial } from "@/components/Visuals/LadderDial/LadderDial";
+import { HeatmapDemo } from "@/components/Visuals/Heatmap/HeatmapDemo";
 
 export function VerificationLadderSection() {
   const pills = [
@@ -54,6 +56,17 @@ export function VerificationLadderSection() {
             <h3 className="font-instrument-serif text-2xl md:text-3xl text-center mb-8 text-[#F5F2E8]">
               Verification Levels
             </h3>
+
+            {/* Interactive radial dial */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="mb-10"
+            >
+              <LadderDial />
+            </motion.div>
 
             {/* Vertical connecting line - moved to right */}
             <div className="absolute right-8 top-20 bottom-0 w-0.5 bg-gradient-to-b from-[#7C7CFF] to-[#1A1D22]"></div>
@@ -128,6 +141,17 @@ export function VerificationLadderSection() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Heat-map visual demo */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+              className="mt-12"
+            >
+              <HeatmapDemo />
+            </motion.div>
           </motion.div>
         </div>
       </div>

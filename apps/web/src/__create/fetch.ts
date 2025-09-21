@@ -9,13 +9,27 @@ const safeStringify = (value: unknown) =>
     return v;
   });
 
-const postToParent = (level: 'log' | 'warn' | 'error', text: string, extra: unknown) => {
+const postToParent = (
+  level: 'log' | 'warn' | 'error' | 'info' | 'debug',
+  text: string,
+  extra: unknown
+) => {
   try {
     if (isBackend() || !window.parent || window.parent === window) {
-      const fn = (
-        level in console ? (console as any)[level] : console.log
-      ) as (...args: any[]) => void;
-      fn(text, extra);
+      // Map known log levels to the corresponding console method to avoid
+      // indexing the console object with a dynamic string (which causes a TS error).
+      const logger =
+        level === 'error'
+          ? console.error
+          : level === 'warn'
+          ? console.warn
+          : level === 'info'
+          ? console.info
+          : level === 'debug'
+          ? console.debug
+          : console.log;
+
+      logger(text, extra);
       return;
     }
     window.parent.postMessage(

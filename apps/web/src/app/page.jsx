@@ -10,8 +10,11 @@ import { MCPSection } from "@/components/MCPSection/MCPSection";
 import { AegnticSection } from "@/components/AegnticSection/AegnticSection";
 import { TrustPrivacySection } from "@/components/TrustPrivacySection/TrustPrivacySection";
 import { EigenLayerSection } from "@/components/EigenLayerSection/EigenLayerSection";
+import { MandateSection } from "@/components/MandateSection/MandateSection";
 import { VerifierNetworkSection } from "@/components/VerifierNetworkSection/VerifierNetworkSection";
+import { EvidencePipelineSection } from "@/components/EvidencePipelineSection/EvidencePipelineSection";
 import { CtaSection } from "@/components/CtaSection/CtaSection";
+import { PersonaExplorer } from "@/components/Visuals/Persona/PersonaExplorer";
 import { Footer } from "@/components/Footer/Footer";
 import { FontStyles } from "@/components/FontStyles/FontStyles";
 import { motion } from "motion/react";
@@ -30,6 +33,16 @@ export default function HomePage() {
       />
 
       <main className="max-w-[1200px] mx-auto px-4 lg:px-8">
+        {/* Mandate */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <MandateSection />
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -132,6 +145,16 @@ export default function HomePage() {
           <VerificationLadderSection />
         </motion.div>
 
+        {/* Evidence Pipeline */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <EvidencePipelineSection />
+        </motion.div>
+
         {/* Second Image Break */}
         <motion.div
           className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] my-20 lg:my-32"
@@ -159,6 +182,16 @@ export default function HomePage() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <WhoItsForSection />
+        </motion.div>
+
+        {/* Persona Activation Explorer */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <PersonaExplorer />
         </motion.div>
 
         <motion.div
