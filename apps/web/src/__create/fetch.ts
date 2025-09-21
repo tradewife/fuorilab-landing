@@ -9,10 +9,13 @@ const safeStringify = (value: unknown) =>
     return v;
   });
 
-const postToParent = (level: string, text: string, extra: unknown) => {
+const postToParent = (level: 'log' | 'warn' | 'error', text: string, extra: unknown) => {
   try {
     if (isBackend() || !window.parent || window.parent === window) {
-      ('level' in console ? console[level] : console.log)(text, extra);
+      const fn = (
+        level in console ? (console as any)[level] : console.log
+      ) as (...args: any[]) => void;
+      fn(text, extra);
       return;
     }
     window.parent.postMessage(

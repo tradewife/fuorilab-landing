@@ -77,6 +77,10 @@ export default defineConfig({
     },
     dedupe: ['react', 'react-dom'],
   },
+  // Prevent react-idle-timer (CJS) from being externalized during SSR build
+  ssr: {
+    noExternal: ['react-idle-timer'],
+  },
   clearScreen: false,
   server: {
     allowedHosts: true,
