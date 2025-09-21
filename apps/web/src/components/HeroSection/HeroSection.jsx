@@ -51,7 +51,7 @@ export function HeroSection({ loading, onSubmit, waitlistSuccess, error }) {
             transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
             className="font-instrument-serif text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-[1.15] text-white/95 mb-8 drop-shadow-lg tracking-tight max-w-[800px] mx-auto"
           >
-            The tamper-evident archive for AI misalignment
+            The tamper-evident archive for AI alignment variance
           </motion.h2>
 
           <motion.p
@@ -90,7 +90,7 @@ export function HeroSection({ loading, onSubmit, waitlistSuccess, error }) {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="mt-4 text-sm text-white/60"
           >
-            No spam. Updates only as milestones ship.
+            We'll only email when milestones ship.
           </motion.p>
         </motion.div>
       </div>
