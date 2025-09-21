@@ -9,7 +9,11 @@ const safeStringify = (value: unknown) =>
     return v;
   });
 
-const postToParent = (level: string, text: string, extra: unknown) => {
+const postToParent = (
+  level: 'log' | 'warn' | 'error' | 'info' | 'debug',
+  text: string,
+  extra: unknown
+) => {
   try {
     if (isBackend() || !window.parent || window.parent === window) {
       // Map known log levels to the corresponding console method to avoid
