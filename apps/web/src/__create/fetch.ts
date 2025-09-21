@@ -12,7 +12,20 @@ const safeStringify = (value: unknown) =>
 const postToParent = (level: string, text: string, extra: unknown) => {
   try {
     if (isBackend() || !window.parent || window.parent === window) {
-      ('level' in console ? console[level] : console.log)(text, extra);
+      // Map known log levels to the corresponding console method to avoid
+      // indexing the console object with a dynamic string (which causes a TS error).
+      const logger =
+        level === 'error'
+          ? console.error
+          : level === 'warn'
+          ? console.warn
+          : level === 'info'
+          ? console.info
+          : level === 'debug'
+          ? console.debug
+          : console.log;
+
+      logger(text, extra);
       return;
     }
     window.parent.postMessage(
